@@ -7,17 +7,17 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     public Text countText;
-    public Text winText;
+    public Text WinText;
 
     private Rigidbody rb;
-    private int count;
+    public int count;
 
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText ();
-        winText.text = "";
+        WinText.text = "WinText";
     }
   
     void FixedUpdate ()
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    void onTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag ("PickUp"))
         {
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
         countText.text = "Count: " + count.ToString();
         if (count >= 8)
         {
-            winText.text = "You Win!";
+            WinText.text = "You Win!";
         }
     }
 
